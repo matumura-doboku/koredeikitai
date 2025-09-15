@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Address & AOI Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./aoi-style.css" />
+  <style>
+    html, body, #map { height: 100%; margin: 0; }
+    #map { position: relative; background: #eef3f7; }
+    #canvas { position: absolute; inset: 0; pointer-events: auto; }
+  </style>
+</head>
+<body>
+  <div id="map">
+    <!-- ここに既存の地図を置いてください。例では空の領域だけ用意 -->
+    <canvas id="canvas"></canvas>
+
+    <div class="aoi-toolbar">
+      <button id="btn-poly">範囲選択（Polygon）</button>
+      <button id="btn-line">中心線（Polyline）</button>
+    </div>
+
+    <div class="addr-box">
+      <input id="addr" type="text" placeholder="香川県、広島市、山中町３－１－２ など" size="38"/>
+      <ul id="suggest" class="addr-suggest"></ul>
+    </div>
+  </div>
+
+  <script type="module">
+    import { setupAddressForm } from './address-form.js';
+    import { AOIDraw } from './aoi-draw.js';
+
+    // 仮の「地図」投影：画面座標≒疑似Webメルカトル（デモ用）。実アプリでは MapLibre/Leaflet に差し替え。
+    const mapState = { center: {lng: 132.455, lat: 34.396}, zoom: 11 };
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    function lngLatToPoint({lng,lat}){
+      // 非正規化の簡易式。実運用は必ずライブラリの project()/unproject() を使ってください。
+      const x = (lng + 180)/360 * canvas.clientWidth;
+      const y = (90 - lat)/180 * canvas.clientHeight;
+      return {x,y};
+    }
+    function pointToLngLat({x,y}){
+      const lng = x / canvas.clientWidth * 360 - 180;
+      const lat = 90 - y / canvas.clientHeight * 180;
+      return {lng, lat};
+    }
+
+    const aoi = new AOIDraw({
+      canvas,
+      proj: { project: lngLatToPoint, unproject: pointToLngLat },
+      mode: 'polygon',
+      bufferMeters: 0,
+      onComplete: (geo) => {
+        console.log('AOI GeoJSON:', geo);
+        alert('AOIを確定しました（コンソールに GeoJSON 出力）');
+      }
+    });
+
+    document.getElementById('btn-poly').addEventListener('click', ()=> aoi.start('polygon'));
+    document.getElementById('btn-line').addEventListener('click', ()=> aoi.start('polyline'));
+
+    const addrInput = document.getElementById('addr');
+    const suggest = document.getElementById('suggest');
+    const form = setupAddressForm({
+      input: addrInput,
+      suggestBox: suggest,
+      onResolve: (lng, lat, bbox, meta) => {
+        // 簡易「移動」表現：中央にガイドを描く
+        mapState.center = { lng, lat };
+        // 視覚化
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        const p = lngLatToPoint({lng,lat});
+        ctx.beginPath(); ctx.arc(p.x,p.y,6,0,Math.PI*2);
+        ctx.fillStyle='#ff5555'; ctx.fill();
+      }
+    });
+  </script>
+</body>
+</html>
