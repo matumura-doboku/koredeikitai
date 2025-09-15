@@ -281,7 +281,7 @@ async function runPipeline(geo){
 
 <!-- traffic wiring: connect datetime UI -> system modules (non-invasive) -->
 <script type="module" id="impact-traffic-wire">
-  import { DATA_PATHS, VC_STYLE } from './js/system/ui-spec.js';
+  import { DATA_PATHS, VC_STYLE } from "./js/system/ui-spec.js";
   import { loadSegmentsCSV, loadTrafficCSV, joinSegmentsTraffic } from './js/system/data-mapper.v3.js?v=final-20250914-145859';
   import { computeHourMetrics, proportionateDiversion } from './js/system/compute-spec.js';
   import { applyVCStyle } from './js/system/heat-style.js';
