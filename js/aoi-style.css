@@ -1,0 +1,19 @@
+
+/* js/aoi-style.css */
+.aoi-toolbar {
+  position: absolute; top: 10px; left: 10px; z-index: 9999;
+  background: rgba(255,255,255,0.95); border-radius: 12px; padding: 8px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-family: system-ui, sans-serif; font-size: 14px;
+}
+.aoi-toolbar button{ margin-right:6px; }
+.addr-box {
+  position: absolute; top: 10px; right: 10px; z-index: 9999;
+  background: rgba(255,255,255,0.98); border-radius: 12px; padding: 8px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.addr-suggest {
+  list-style: none; margin: 6px 0 0 0; padding: 0; display: none; max-height: 200px; overflow: auto;
+  border: 1px solid #ddd; border-radius: 8px;
+}
+.addr-suggest li { padding: 6px 8px; cursor: pointer; }
+.addr-suggest li:hover, .addr-suggest li:focus { background: #f0f7ff; outline: none; }
