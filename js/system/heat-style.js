@@ -1,7 +1,7 @@
 // /js/system/heat-style.js
 // V/C 4段階の色分けをレイヤに適用する小さなユーティリティ
 
-import { VC_STYLE } from './js/system/ui-spec.js';
+import { VC_STYLE } from './ui-spec.js';
 
 export function applyVCStyle(map, layerId = 'segments-heat') {
   if (!map || !map.getLayer(layerId)) return;
