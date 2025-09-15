@@ -1,7 +1,6 @@
 // /js/system/legend-wire.js
 // VC 4段階の凡例を #legend に動的生成し、指標セレクタ変更に追従
-
-import { VC_STYLE } from "./ui-spec.js";
++ import { VC_STYLE } from './ui-spec.js';
 
 function el(tag, attrs={}, children=[]) {
   const e = document.createElement(tag);
