@@ -1,0 +1,105 @@
+/* style.css (Legend updated to latest R thresholds)
+   R threshold bins (from runner.js classes: [0.2, 0.35, 0.5, 0.7, 0.9]):
+     bin1 / cls0: R ≤ 0.20
+     bin2 / cls1: 0.20 < R ≤ 0.35
+     bin3 / cls2: 0.35 < R ≤ 0.50
+     bin4 / cls3: 0.50 < R ≤ 0.70
+     bin5 / cls4: 0.70 < R ≤ 0.90
+     bin6 / cls5: 0.90 < R
+   Note: layers.js uses cls to color features; ensure cls range (0..5) is consistent.
+*/
+
+:root{
+  --bg:#ffffff;
+  --panel:#f7f7fb;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --primary:#2563eb;
+
+  /* R-thresholds as variables (optional use in UI text with JS) */
+  --r-th-1: 0.20;
+  --r-th-2: 0.35;
+  --r-th-3: 0.50;
+  --r-th-4: 0.70;
+  --r-th-5: 0.90;
+
+  /* Colors aligned with layers.js palette trend (green -> orange -> reds) */
+  --r-c1: #16a34a; /* cls0  R ≤ 0.20   green */
+  --r-c2: #84cc16; /* cls1  0.20-0.35  yellow-green */
+  --r-c3: #f59e0b; /* cls2  0.35-0.50  amber */
+  --r-c4: #fca5a5; /* cls3  0.50-0.70  light red */
+  --r-c5: #dc2626; /* cls4  0.70-0.90  red */
+  --r-c6: #7f1d1d; /* cls5  >0.90      dark red */
+
+  /* Aux states (match layers.js): */
+  --road-closed:#000000;   /* closed */
+  --road-sel:#e5e7eb;      /* selection highlight */
+  --road-unknown:#9ca3af;  /* unknown/cls=-1 */
+}
+
+*{box-sizing:border-box}
+html,body,.app{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Meiryo",sans-serif;}
+.app{display:grid;grid-template-columns:360px 1fr;background:var(--bg);}
+.sidebar{border-right:1px solid var(--border);background:var(--panel);padding:16px;overflow:auto;}
+.brand{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.brand .title{font-weight:700;}
+.tabs{display:flex;gap:8px;margin-bottom:8px;}
+.tab{flex:1;padding:8px 12px;border:1px solid var(--border);background:#fff;border-radius:8px;cursor:pointer}
+.tab.active{background:#eaf2ff;border-color:#bfdbfe;}
+.panel{display:block}
+.panel.hidden{display:none}
+.field{display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+input,select,button{padding:8px;border:1px solid var(--border);border-radius:8px;background:white;}
+button{cursor:pointer}
+button.block{width:100%}
+.row{display:flex;align-items:center}
+.row.gap{gap:8px}
+.grow{flex:1}
+.muted{color:var(--muted)}
+.hint{font-size:12px;color:var(--muted)}
+hr{border:none;border-top:1px solid var(--border);margin:12px 0}
+.map-wrap{position:relative}
+#map{position:absolute;inset:0}
+.card{position:absolute;right:12px;bottom:12px;background:white;padding:12px;border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.08);min-width:220px}
+.legend-title{font-weight:700;margin-bottom:8px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;margin:4px 0}
+.chip{display:inline-block;width:16px;height:10px;border-radius:3px;border:1px solid #0001}
+
+/* Updated legend chips (R bins) */
+.chip.c1{background:var(--r-c1)} /* R ≤ 0.20 */
+.chip.c2{background:var(--r-c2)} /* 0.20 < R ≤ 0.35 */
+.chip.c3{background:var(--r-c3)} /* 0.35 < R ≤ 0.50 */
+.chip.c4{background:var(--r-c4)} /* 0.50 < R ≤ 0.70 */
+.chip.c5{background:var(--r-c5)} /* 0.70 < R ≤ 0.90 */
+.chip.c6{background:var(--r-c6)} /* 0.90 < R */
+
+.legend-src{margin-top:6px;color:#6b7280;font-size:11px}
+
+/* 住所候補リスト */
+.results{border:1px solid var(--border);border-radius:8px;background:#fff;margin-top:6px;max-height:160px;overflow:auto}
+.result-item{padding:8px 10px;cursor:pointer}
+.result-item:hover{background:#f3f4f6}
+
+/* 範囲選択中のカーソル */
+.drawing-cursor{cursor:crosshair}
+
+/* Aux legend chips for states (optional in UI) */
+.chip.closed{background:var(--road-closed)}
+.chip.sel{background:var(--road-sel)}
+.chip.unknown{background:var(--road-unknown)}
+
+/* radio group comfort */
+label.radio{padding:4px 8px;border-radius:8px}
+label.radio input{margin-right:4px}
+
+/* サイドパネル下端に固定する更新メッセージ */
+.panel-refresh-note{
+  position: fixed;
+  left: 16px;
+  bottom: 12px;
+  font-size: 12px;
+  color: red;            /* ← ここを赤に変更 */
+  background: transparent;
+  pointer-events: none;
+}
+
