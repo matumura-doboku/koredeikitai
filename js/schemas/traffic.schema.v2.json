@@ -1,0 +1,366 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "traffic.csv.v2 (wide)",
+  "description": "ワイド形式の交通量CSV。1行=1リンク。各時刻(00-23)の上り/下り列を持つ。",
+  "type": "object",
+  "required": [
+    "linkid",
+    "kansokuten"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "linkid": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "kansokuten": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "koutuuryou_ue00": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita00": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue01": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita01": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue02": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita02": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue03": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita03": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue04": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita04": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue05": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita05": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue06": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita06": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue07": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita07": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue08": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita08": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue09": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita09": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue10": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita10": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue11": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita11": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue12": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita12": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue13": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita13": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue14": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita14": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue15": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita15": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue16": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita16": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue17": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita17": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue18": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita18": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue19": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita19": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue20": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita20": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue21": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita21": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue22": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita22": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_ue23": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    },
+    "koutuuryou_sita23": {
+      "type": [
+        "number",
+        "integer",
+        "null"
+      ]
+    }
+  }
+}

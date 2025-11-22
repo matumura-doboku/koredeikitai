@@ -1,0 +1,23 @@
+{
+  "traffic": {
+    "current": "v2",
+    "supported": [
+      "v1",
+      "v2"
+    ]
+  },
+  "road": {
+    "current": "v1",
+    "supported": [
+      "v1"
+    ]
+  },
+  "compat": {
+    "traffic": {
+      "v1": {
+        "migratesTo": "v2",
+        "notes": "列名の異表記（ue/sitaの接頭辞など）をv2へ寄せる"
+      }
+    }
+  }
+}
