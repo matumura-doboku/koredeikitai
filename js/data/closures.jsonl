@@ -1,2 +1,0 @@
-{"id":"C_SAMPLE_01","type":"partial","linkIds":[123,124],"dir":"both","cap_ratio":0.6,"cost_factor":1.15,"time":{"start":"2025-10-20T09:00:00+09:00","end":"2025-10-20T17:00:00+09:00"}}
-{"id":"C_SAMPLE_02","type":"full","linkIds":[2001,2002],"dir":"up","time":{"start":"2025-10-20T09:00:00+09:00","end":"2025-10-20T17:00:00+09:00"}}
