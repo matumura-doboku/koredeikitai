@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "road.geojson.properties.v1",
+  "description": "GeoJSON Feature の properties 部分のスキーマ（道路リンク単位）。",
+  "type": "object",
+  "required": [
+    "linkid",
+    "sensyu",
+    "syasensuu",
+    "youryou",
+    "oneway",
+    "entyou",
+    "haba",
+    "kousaten"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "linkid": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    },
+    "sensyu": {
+      "type": "string",
+      "enum": [
+        "Nat",
+        "Pref",
+        "Muni",
+        "Sonota"
+      ]
+    },
+    "syasensuu": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "youryou": {
+      "type": [
+        "number",
+        "integer"
+      ],
+      "minimum": 0
+    },
+    "oneway": {
+      "type": "string",
+      "enum": [
+        "ue",
+        "sita",
+        "both"
+      ]
+    },
+    "entyou": {
+      "type": [
+        "number",
+        "integer"
+      ],
+      "minimum": 0,
+      "description": "m"
+    },
+    "haba": {
+      "type": [
+        "number",
+        "integer"
+      ],
+      "minimum": 0,
+      "description": "m"
+    },
+    "mae": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usiro": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bunki": {
+      "type": "string",
+      "pattern": "^(\\s*\\d+\\s*(;\\s*\\d+\\s*)*)?$",
+      "description": "';' 区切りの linkid 列"
+    },
+    "kousaten": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "_schema": {
+      "type": "string",
+      "const": "v1"
+    }
+  }
+}
