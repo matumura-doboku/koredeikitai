@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>影響計算システム（実験公開版）</title>
+  <title>影響計算システム</title>
   <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -11,7 +11,7 @@
   <div class="app">
     <aside class="sidebar">
       <header class="brand">
-        <span class="title">影響計算システム（実験公開版）</span>
+        <span class="title">影響計算システム</span>
         <select class="mode-select">
           <option>交通量</option>
         </select>
@@ -68,13 +68,21 @@
           <p class="hint">左クリックで端点/折れ点の指定、右クリックで１つ戻す、ESCで作業を中断、Enterで決定</p>
         </div>
 
-        <div id="side-panel">
-        <!-- ここに「ホーム」「計算」「レポート」など既存の内容が入る -->
+        <div class="section" style="margin-top:8px">
+          <strong>操作説明</strong>
+          <div class="row gap">
+            <button id="btn-open-manual">操作説明書</button>
+          </div>
+          <p class="hint">画面構成と基本操作を写真付きで説明した操作説明書を表示します。</p>
+        </div>
 
-  <!-- ↓ このブロックをパネルの一番下に追加する ↓ -->
-           <div class="panel-refresh-note">
+        <div id="side-panel">
+          <!-- ここに「ホーム」「計算」「レポート」など既存の内容が入る -->
+
+          <!-- ↓ このブロックをパネルの一番下に追加する ↓ -->
+          <div class="panel-refresh-note">
             Ctrl＋F5 で地図を更新
-           </div>
+          </div>
         </div>
 
       </section>
@@ -102,7 +110,6 @@
         </div>
         <div class="row gap">
           <button id="btn-run">計算実行</button>
-          
         </div>
         <p class="hint">「計算実行」は移動経路を選択後にのみ実行できます</p>
       </section>
@@ -165,8 +172,46 @@
     </main>
   </div>
 
+  <!-- 利用規約オーバーレイ -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-card">
+      <h1 class="intro-title">利用規約</h1>
+      <div class="intro-body" id="intro-html">
+        <!-- intro.js が <pre class="intro-pre">...</pre> を差し込み -->
+      </div>
+      <div class="intro-agree">
+        <label>
+          <input type="checkbox" id="intro-agree-checkbox">
+          利用規約に同意します
+        </label>
+      </div>
+      <div class="intro-actions">
+        <button id="intro-start-btn" disabled>開始</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 操作説明書オーバーレイ -->
+  <div id="manual-overlay" class="intro-overlay hidden">
+    <div class="intro-card manual-card">
+      <h1 class="intro-title">操作説明書</h1>
+      <div class="intro-body manual-body" id="manual-body"></div>
+      <div class="intro-actions">
+        <button id="manual-close-btn">閉じる</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+
+  <!-- 利用前オーバーレイ制御 -->
+  <script type="module" src="./js/intro/intro.js"></script>
+
+  <!-- 操作説明書オーバーレイ制御 -->
+  <script type="module" src="./js/intro/manual.js"></script>
+
+  <!-- 既存のアプリ本体スクリプト -->
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>
