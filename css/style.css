@@ -103,3 +103,78 @@ label.radio input{margin-right:4px}
   pointer-events: none;
 }
 
+
+/* 利用前オーバーレイ */
+.intro-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.97);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:24px;
+  overflow:auto;
+  box-sizing:border-box;
+}
+
+.intro-card{
+  max-width:960px;
+  width:100%;
+  background:#ffffff;
+  border-radius:8px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.12);
+  padding:24px 28px;
+  margin-top:24px;
+}
+
+.intro-title{
+  margin-top:0;
+  margin-bottom:16px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.intro-body{
+  font-size:14px;
+  line-height:1.6;
+  max-height:60vh;
+  overflow-y:auto;
+  padding-right:8px;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin:8px 0 16px 0;
+}
+
+.intro-pre{
+  white-space:pre-wrap;
+  margin:0;
+}
+
+.intro-body h2,
+.intro-body h3{
+  margin-top:16px;
+  font-size:15px;
+}
+
+.intro-agree{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.intro-actions{
+  text-align:right;
+}
+
+#intro-start-btn[disabled]{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+/* オーバーレイを消すとき用 */
+.intro-overlay.hidden{
+  display:none;
+}
